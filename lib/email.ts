@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export type EmailData = {
   projectId: string;
   name: string;
@@ -91,8 +89,13 @@ export async function sendProjectEmail(data: EmailData) {
     </html>
   `;
 
+   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.EMAIL_TO;
-  if (!to) throw new Error("EMAIL_TO тохируулаагүй");
+  if (!apiKey || !to) {
+    console.warn("Resend тохиргоо дутуу — имэйл илгээгдсэнгүй");
+    return false;
+  }
+  const resend = new Resend(apiKey);
 
   const { error } = await resend.emails.send({
     from: process.env.EMAIL_FROM ?? "BBD <onboarding@resend.dev>",

@@ -2,8 +2,6 @@
 
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function sendContactEmail(formData: FormData) {
   const name = formData.get('name') as string
   const phone = formData.get('phone') as string
@@ -14,10 +12,16 @@ export async function sendContactEmail(formData: FormData) {
     return { success: false, error: 'Бүх талбарыг бөглөнө үү' }
   }
 
+  if (!process.env.RESEND_API_KEY || !process.env.EMAIL_TO) {
+    console.warn('Resend тохиргоо дутуу')
+    return { success: false, error: 'Имэйл тохиргоо хийгдээгүй байна' }
+  }
+
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from: 'BBD <onboarding@resend.dev>', // verify хийсэн домэйн
-      to: process.env.EMAIL_TO!,
+      to: process.env.EMAIL_TO,
       subject: `BBD сайтаас: ${name}`,
       html: `
         <h2>Шинэ захиалга</h2>
