@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { LogoMark } from "../ui/Logo";
 // ⭐ Type тодорхойлно
 type NavItem = {
   href: string;
@@ -35,10 +35,8 @@ export function Sidebar() {
             href="/admin"
             className="flex items-center gap-2 font-display text-xl font-bold"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan to-violet text-sm">
-              B
-            </span>
-            BBD Admin
+                        <LogoMark size={32} />
+            Triflow Admin
           </Link>
         </div>
 

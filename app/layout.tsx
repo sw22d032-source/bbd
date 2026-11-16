@@ -16,9 +16,9 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "BBD — Build Better Development",
+  title: "Triflow — Digital Solutions",
   description:
-    "Вэб сайт, мобайл апп, захиалгат програм хангамж, UI/UX дизайны үйлчилгээ.",
+    "App development, web design, software development — вэб сайт, мобайл апп, захиалгат програм хангамж.",
 };
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "../../../lib/prisma";
 import { setSession, verifyPassword, getAdmin } from "../../../lib/auth";
-
+import { LogoMark } from "@/app/components/ui/Logo";
 async function login(formData: FormData) {
   "use server";
 
@@ -44,11 +44,11 @@ export default async function LoginPage({
       {/* Card */}
       <div className="relative w-full max-w-md">
         <div className="mb-8 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan to-violet font-display text-2xl font-bold text-white shadow-xl shadow-cyan/20">
-            B
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xl shadow-cyan/20">
+            <LogoMark size={44} />
           </div>
           <h1 className="mt-4 font-display text-2xl font-bold text-white">
-            BBD Admin
+            Triflow Admin
           </h1>
           <p className="mt-1 text-sm text-white/60">
             Захиалгын удирдлагын систем

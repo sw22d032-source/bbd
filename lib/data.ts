@@ -301,7 +301,7 @@ export const TECH: Record<string, [string, string][]> = {
     ["MSSQL", D("microsoftsqlserver")],  // ← plain хассан
     ["Prisma", S("prisma")],
   ],
-  API: [["GraphQL", D("graphql")]],  // ← plain хассан
+   API: [["GraphQL", D("graphql", "plain")]],  // ← plain хассан
   Styling: [["Tailwind CSS", D("tailwindcss")]],
   DevOps: [
     ["Docker", D("docker")],

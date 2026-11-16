@@ -1,36 +1,34 @@
 import { STEPS } from "../../lib/data";
 import { Reveal } from "./ui/Reveal";
-import { Section } from "./ui/Section";
+import { Section, SectionHeading } from "./ui/Section";
 
 export function Process() {
   return (
     <Section id="process" variant="white">
       <Reveal>
-        <div className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-indigo">
-            Ажлын явц
-          </span>
-          <h2 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
-            Хэрхэн ажилладаг вэ
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-ink/75">
-            Тодорхой, ил тод 5 үе шат. Та хаана ч байсан хянах боломжтой.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Ажлын явц"
+          title={<>Хэрхэн <span className="text-brand">ажилладаг</span> вэ</>}
+          text="Тодорхой, ил тод 5 үе шат. Та хаана ч байсан явцаа хянах боломжтой."
+        />
       </Reveal>
 
-      <ol className="relative mt-14 grid gap-8 md:grid-cols-5">
+      <ol className="relative mt-16 grid gap-6 md:grid-cols-5">
+        <div aria-hidden className="absolute left-[10%] right-[10%] top-8 hidden h-0.5 bg-brand opacity-30 md:block" />
+
         {STEPS.map((s, i) => (
           <Reveal key={s.title} delay={i * 100}>
-            <li className="relative">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-violet font-display text-lg font-bold text-white shadow-lg shadow-violet/30">
+            <li className="relative flex flex-col items-center text-center">
+              <div className="relative">
+                <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-ink/5 bg-white text-3xl shadow-lg shadow-indigo/10">
+                  {s.icon}
+                </span>
+                <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand font-display text-xs font-bold text-white shadow-md">
                   {i + 1}
                 </span>
-                <span className="text-2xl">{s.icon}</span>
               </div>
-              <h3 className="mt-4 font-bold">{s.title}</h3>
-              <p className="mt-1 text-sm text-ink/70">{s.text}</p>
+              <h3 className="mt-5 font-display text-base font-bold text-ink">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink/60">{s.text}</p>
             </li>
           </Reveal>
         ))}

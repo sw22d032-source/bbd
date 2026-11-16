@@ -2,73 +2,72 @@ import { CONTACT } from "../../lib/data";
 import { ProjectWizard } from "./contact/ProjectWizard";
 import { Reveal } from "./ui/Reveal";
 
+const WHY = [
+  "24 цагийн дотор хариу",
+  "Үнэгүй 30 минутын зөвлөгөө",
+  "Тодорхой үнэ, далд төлбөргүй",
+  "Source code бүрэн танд",
+  "Багц бүрд үнэгүй дэмжлэг",
+];
+
 export function Contact() {
+  const items = [
+    { label: "Утас", value: CONTACT.phone, href: `tel:${CONTACT.phone.replace(/\s/g, "")}`, icon: "📞" },
+    { label: "Имэйл", value: CONTACT.email, href: `mailto:${CONTACT.email}`, icon: "✉️" },
+    { label: "Хаяг", value: CONTACT.address, href: undefined, icon: "📍" },
+  ];
+
   return (
     <section id="contact" className="grid-bg text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-[1fr_1.5fr]">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[1fr_1.45fr]">
         <Reveal>
           <div>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl">
-              Төслөө эхлүүлье
-            </h2>
-            <p className="mt-4 max-w-sm text-white/85">
-              Хэдэн минутын дотор хүсэлтээ үлдээгээрэй. Бид 24 цагийн дотор
-              холбогдож, үнэгүй зөвлөгөө өгнө.
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-cyan">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+              Холбоо барих
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">Төслөө эхлүүлье</h2>
+            <p className="mt-4 max-w-sm leading-relaxed text-white/75">
+              Хэдэн минутын дотор хүсэлтээ үлдээгээрэй. Бид 24 цагийн дотор холбогдож, үнэгүй зөвлөгөө өгнө.
             </p>
 
-            <dl className="mt-8 space-y-5">
-              <div>
-                <dt className="text-sm text-white/70">Утас</dt>
-                <dd>
-                  <a
-                    className="text-xl font-semibold hover:text-cyan hover:underline"
-                    href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                  >
-                    {CONTACT.phone}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-white/70">Имэйл</dt>
-                <dd>
-                  <a
-                    className="text-xl font-semibold hover:text-cyan hover:underline"
-                    href={`mailto:${CONTACT.email}`}
-                  >
-                    {CONTACT.email}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-white/70">Хаяг</dt>
-                <dd className="text-xl font-semibold">{CONTACT.address}</dd>
-              </div>
-            </dl>
+            <ul className="mt-8 space-y-3">
+              {items.map((it) => {
+                const inner = (
+                  <>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-lg">{it.icon}</span>
+                    <span className="min-w-0">
+                      <span className="block text-xs font-medium text-white/60">{it.label}</span>
+                      <span className="block truncate font-semibold">{it.value}</span>
+                    </span>
+                  </>
+                );
+                return (
+                  <li key={it.label}>
+                    {it.href ? (
+                      <a
+                        href={it.href}
+                        className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-3 transition-colors hover:border-cyan/40 hover:bg-white/10"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-3">{inner}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
 
-            {/* Яагаад BBD? */}
-            <div className="mt-10 rounded-2xl border border-white/15 bg-white/5 p-5">
-              <p className="text-sm font-semibold">Яагаад BBD гэж?</p>
-              <ul className="mt-3 space-y-2 text-sm text-white/80">
-                <li className="flex gap-2">
-                  <span className="text-cyan">✓</span>
-                  24 цагийн дотор хариу
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-cyan">✓</span>
-                  Үнэгүй 30 минутын зөвлөгөө
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-cyan">✓</span>
-                  Тодорхой үнэ, далд төлбөргүй
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-cyan">✓</span>
-                  Source code бүрэн танд
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-cyan">✓</span>
-                  Багц бүрд үнэгүй дэмжлэг
-                </li>
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+              <p className="font-display text-sm font-bold">Яагаад Triflow гэж?</p>
+              <ul className="mt-4 space-y-2.5 text-sm text-white/80">
+                {WHY.map((w) => (
+                  <li key={w} className="flex items-center gap-2.5">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan/20 text-[10px] font-bold text-cyan">✓</span>
+                    {w}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

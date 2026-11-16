@@ -8,50 +8,41 @@ type Props = {
 };
 
 export function StepProgress({ current, total = WIZARD_STEPS.length }: Props) {
-  return (
-    <ol className="mb-8 flex items-center justify-between gap-2">
-      {WIZARD_STEPS.map((step, i) => {
-        const num = i + 1;
-        const done = num < current;
-        const active = num === current;
+  const active = WIZARD_STEPS[current - 1];
 
-        return (
-          <li key={step.id} className="flex flex-1 items-center gap-2">
-            <div className="flex flex-1 flex-col items-start">
-              <div className="flex items-center gap-2">
-                <span
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
-                    done
-                      ? "bg-cyan text-ink"
-                      : active
-                        ? "bg-indigo text-white ring-4 ring-indigo/20"
-                        : "bg-ink/10 text-ink/50"
-                  }`}
-                >
-                  {done ? "✓" : num}
-                </span>
-                <div className="hidden sm:block">
-                  <p
-                    className={`text-sm font-semibold ${
-                      active ? "text-indigo" : "text-ink/60"
-                    }`}
-                  >
-                    {step.title}
-                  </p>
-                  <p className="text-xs text-ink/50">{step.desc}</p>
-                </div>
-              </div>
-            </div>
-            {num < total && (
-              <div
-                className={`h-0.5 flex-1 transition-colors ${
-                  done ? "bg-cyan" : "bg-ink/10"
+  return (
+    <div className="mb-8">
+      <ol className="flex items-center gap-2">
+        {WIZARD_STEPS.map((step, i) => {
+          const num = i + 1;
+          const done = num < current;
+          const isActive = num === current;
+
+          return (
+            <li key={step.id} className="flex flex-1 items-center gap-2 last:flex-none">
+              <span
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-all ${
+                  done ? "bg-brand text-white" : isActive ? "bg-brand text-white ring-4 ring-indigo/15" : "bg-ink/5 text-ink/40"
                 }`}
-              />
-            )}
-          </li>
-        );
-      })}
-    </ol>
+              >
+                {done ? "✓" : num}
+              </span>
+              <span className={`hidden whitespace-nowrap text-sm font-bold sm:block ${isActive ? "text-ink" : "text-ink/45"}`}>
+                {step.title}
+              </span>
+              {num < total && (
+                <span className={`h-0.5 min-w-4 flex-1 rounded-full transition-colors ${done ? "bg-brand" : "bg-ink/10"}`} />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+
+      {active && (
+        <p className="mt-3 text-xs font-medium text-ink/50">
+          Алхам {current}/{total} · {active.desc}
+        </p>
+      )}
+    </div>
   );
 }
