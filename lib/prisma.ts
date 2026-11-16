@@ -1,17 +1,16 @@
 import "server-only";
 
 import { PrismaClient } from "./generated/prisma/client";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
 function createClient() {
-  const adapter = new PrismaLibSql({
-    url: process.env.DATABASE_URL!,
-    authToken: process.env.DATABASE_AUTH_TOKEN!,
-  });
+  const u = new URL(process.env.DATABASE_URL ?? "postgresql://NOT_SET@x");
+  console.log("DB:", u.username, "| pass length:", u.password.length, "|", u.host);
+  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 
   return new PrismaClient({
     adapter,

@@ -34,11 +34,11 @@ export default async function RequestsPage({
       ...(q
         ? {
             OR: [
-              { name: { contains: q } },
-              { email: { contains: q } },
-              { phone: { contains: q } },
-              { projectId: { contains: q } },
-            ],
+  { name: { contains: q, mode: "insensitive" } },
+  { email: { contains: q, mode: "insensitive" } },
+  { phone: { contains: q, mode: "insensitive" } },
+  { projectId: { contains: q, mode: "insensitive" } },
+],
           }
         : {}),
     },

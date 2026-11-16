@@ -1,8 +1,9 @@
 import "dotenv/config";
 import { PrismaClient } from "../lib/generated/prisma/client";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { scryptSync, randomBytes } from "crypto";
-
+import { config } from "dotenv";
+config({ path: ".env.local" });
 function hashPassword(password: string): string {
   const salt = randomBytes(16).toString("hex");
   const hash = scryptSync(password, salt, 64).toString("hex");
@@ -11,10 +12,7 @@ function hashPassword(password: string): string {
 
 async function main() {
   // ⭐ PrismaLibSQL → PrismaLibSql (жижиг "ql")
-  const adapter = new PrismaLibSql({
-    url: process.env.DATABASE_URL!,
-    authToken: process.env.DATABASE_AUTH_TOKEN!,
-  });
+  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
 
   const prisma = new PrismaClient({ adapter });
 
