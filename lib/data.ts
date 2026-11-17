@@ -3,7 +3,7 @@
 // ============================================
 export const CONTACT = {
   phone: "+976 80901944",
-  email: "dawaauugan787@gmail.com.com",
+    email: "triflowllc@gmail.com",
   address: "Улаанбаатар, Монгол улс",
   facebook: "https://facebook.com",
   instagram: "https://instagram.com",
