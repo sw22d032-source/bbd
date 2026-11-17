@@ -8,6 +8,7 @@ import { logoutAction } from "@/app/admin/logout-action";
 const CRUMBS: Record<string, string> = {
   "/admin": "Dashboard",
   "/admin/requests": "Захиалгууд",
+    "/admin/reviews": "Сэтгэгдэл",
   "/admin/clients": "Харилцагчид",
   "/admin/analytics": "Статистик",
   "/admin/settings": "Тохиргоо",

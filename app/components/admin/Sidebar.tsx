@@ -15,6 +15,7 @@ type NavItem = {
 const NAV: NavItem[] = [
   { href: "/admin", label: "Dashboard", icon: "📊", exact: true },
   { href: "/admin/requests", label: "Захиалгууд", icon: "📋" },
+    { href: "/admin/reviews", label: "Сэтгэгдэл", icon: "💬" },
   { href: "/admin/clients", label: "Харилцагчид", icon: "👥", soon: true },
   { href: "/admin/analytics", label: "Статистик", icon: "📈", soon: true },
   { href: "/admin/settings", label: "Тохиргоо", icon: "⚙️", soon: true },

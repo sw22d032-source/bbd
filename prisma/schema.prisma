@@ -77,3 +77,20 @@ model ActivityLog {
   details    String?
   createdAt  DateTime @default(now())
 }
+
+// ============================================
+// Харилцагчийн сэтгэгдэл (сайтаас бичнэ, админ зөвшөөрнө)
+// ============================================
+model Review {
+  id        String   @id @default(cuid())
+  name      String
+  role      String?
+  text      String
+  rating    Int      @default(5)
+  status    String   @default("PENDING") // PENDING | APPROVED | HIDDEN
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+}
