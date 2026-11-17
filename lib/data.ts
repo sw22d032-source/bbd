@@ -244,11 +244,11 @@ export const TECH_ICONS: Record<string, string> = {
 // ============================================
 // TESTIMONIALS
 // ============================================
-export const TESTIMONIALS = [
-  { name: "Б. Батбаяр", role: "CEO, TechStore", text: "BBD баг манай онлайн дэлгүүрийг 4 долоо хоногт бүтээж өгсөн. Борлуулалт 3 дахин өссөн.", rating: 5 },
-  { name: "С. Сарангэрэл", role: "Founder, EduMN", text: "Маш мэргэжлийн баг. Тайлбарлах, дэмжих нь гайхалтай. Дараагийн төслөө ч даатгана.", rating: 5 },
-  { name: "Д. Тэмүүлэн", role: "CTO, LogiTrans", text: "Хүргэлтийн апп маань цагтаа гарсан. Код чанартай, documentation бүрэн.", rating: 5 },
-] as const;
+// export const TESTIMONIALS = [
+//   { name: "Б. Батбаяр", role: "CEO, TechStore", text: "BBD баг манай онлайн дэлгүүрийг 4 долоо хоногт бүтээж өгсөн. Борлуулалт 3 дахин өссөн.", rating: 5 },
+//   { name: "С. Сарангэрэл", role: "Founder, EduMN", text: "Маш мэргэжлийн баг. Тайлбарлах, дэмжих нь гайхалтай. Дараагийн төслөө ч даатгана.", rating: 5 },
+//   { name: "Д. Тэмүүлэн", role: "CTO, LogiTrans", text: "Хүргэлтийн апп маань цагтаа гарсан. Код чанартай, documentation бүрэн.", rating: 5 },
+// ] as const;
 
 // ============================================
 // STEPS
