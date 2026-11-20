@@ -121,7 +121,7 @@ export const PORTFOLIO = [
     stack: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
     color: "from-violet to-indigo",
     icon: "🛒",
-    github: "https://github.com/boldmnx/ecommerce",
+    github: "https://shop-eta-gules.vercel.app/",
     demo: null,
     featured: true,
   },
