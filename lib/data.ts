@@ -118,7 +118,7 @@ export const PORTFOLIO = [
     categoryLabel: "Вэб",
     desc: "1,000+ бүтээгдэхүүнтэй онлайн дэлгүүр. Сагс, төлбөр, хүргэлт, admin panel бүрэн.",
     features: ["Бүтээгдэхүүний каталог", "Сагс, төлбөрийн интеграц", "Admin panel", "Олон хэл"],
-    stack: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
+    stack: ["Django",  "PostgreSQL", "Tailwind"],
     color: "from-violet to-indigo",
     icon: "🛒",
     github: "https://shop-eta-gules.vercel.app/",
